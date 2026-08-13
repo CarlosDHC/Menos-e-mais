@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Menos é Mais</title>
+    <!-- Importando o CSS Global -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Espaço para CSS específico de cada página -->
+    {% block styles %}{% endblock %}
+</head>
+
+<body>
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/navBar/logo.png') }}" alt="Logo ENIAC">
+        </div>
+
+        <nav class="navBar">
+            <img src="{{ url_for('static', filename='img/navBar/logo.png') }}" alt="Logo" class="imgLogo" />
+
+            <ul class="nav_list">
+                <li class="nav_list-item">
+                    <a href="#" class="nav_list-link"> <!-- Mudei aqui -->
+                        Missões
+                    </a>
+                </li>
+                <li class="nav_list-item">
+                    <a href="#" class="nav_list-link"> <!-- Mudei aqui -->
+                        Conquistas
+                    </a>
+                </li>
+            </ul>
+
+            <a href="#" class="link_perfil"> <!-- Mudei aqui -->
+                <i class="fa-solid fa-circle-user icon"></i>
+            </a>
+        </nav>
+
+    </header>
+
+    <!-- ================= CONTEÚDO DINÂMICO ================= -->
+    <main>
+        {% block content %}
+        <!-- O conteúdo da Home, Login, etc., será injetado aqui -->
+        {% endblock %}
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <section class="footer">
+        <span>Feito por Faculdade ENIAC &copy; 2026 </span>
+    </section>
+</body>
+
+</html>

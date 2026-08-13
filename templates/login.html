@@ -1,0 +1,64 @@
+{% extends "componentes/navbarfooter/base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="imgFundo-fixed">
+    <section class="login">
+        <div class="container_form">
+            <div class="logo">
+                <div class="btnVoltar">
+                    <a href="{{ url_for('home') }}">
+                        <img class="btnSeta" src="{{ url_for('static', filename='img/login/seta.png') }}" alt="<--" />
+                        Voltar
+                    </a>
+                </div>
+
+                <img src="{{ url_for('static', filename='img/login/logo.png') }}" alt="Logo" />
+                <h2>Bem-vindo de volta!</h2>
+                <span>
+                    Acesse sua conta para continuar sua jornada em direção a um futuro sustentável.
+                </span>
+            </div>
+            
+            <!-- Formulário HTML nativo. Ele envia as informações para a rota '/login' -->
+            <form class="form" action="/login" method="POST">
+                <label for="email">
+                    Email: <br />
+                    <input
+                        type="email"
+                        placeholder="example@example.com"
+                        id="email"
+                        name="email"
+                        required
+                    />
+                </label>
+
+                <label for="senha">
+                    Senha: <br />
+                    <input
+                        type="password"
+                        placeholder="Senha"
+                        id="senha"
+                        name="senha"
+                        required
+                    />
+                </label>
+                
+                <button type="submit">Entrar &rarr;</button>
+            </form>
+            
+            <!-- Mensagem de erro que será enviada pelo Flask, caso o login falhe -->
+            {% if erro %}
+                <p class="error-msg" style="color: red; font-size: 0.9em; margin-top: 10px;">{{ erro }}</p>
+            {% endif %}
+
+            <a href="#" class="cadastro_link">
+                Problemas ao se cadastrar?
+            </a>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends "componentes/navbarfooter/base.html" %}
+
+{% block styles %}
+<!-- CSS Específico da Home -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<!-- Importando a biblioteca de Ícones (FontAwesome) usada na seção Contato -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= SESSÃO PARALLAX (Home) ================= -->
+<section class="parallax" id="parallax">
+    <img src="{{ url_for('static', filename='img/home/folhas_direita.svg') }}" id="folhaDireita" alt="" />
+    <img src="{{ url_for('static', filename='img/home/meio_direita.svg') }}" id="meioDireita" alt="" />
+    <img src="{{ url_for('static', filename='img/home/meio_esquerda.svg') }}" id="meioEsquerda" alt="" />
+    <img src="{{ url_for('static', filename='img/home/folhas_esquerda.svg') }}" id="folhaEsquerda" alt="" />
+
+    <div class="titulo" id="tituloBox">
+        <div>
+            <img class="titulo_logo" id="text" src="{{ url_for('static', filename='img/home/logo.png') }}" alt="Menos é Mais Logo" />
+        </div>
+        <h4 class="titulo_text">Menos é Mais</h4>
+        <h4 class="subtitulo_text">Lixo Zero</h4>
+        <a href="{{ url_for('login') }}" class="btn_comece">Comece Já</a>
+    </div>
+
+    <img src="{{ url_for('static', filename='img/home/floresta_frente.svg') }}" id="florestaFrente" alt="" />
+</section>
+
+<!-- ================= SESSÃO SOBRE ================= -->
+<section class="sobre" id="sobre">
+    <div class="sobre_apresentacao">
+        <h4>Pequenas atitudes,</h4>
+        <h4>grandes impactos.</h4>
+        <p>
+            Bem-vindo ao Menos é Mais! Descubra como cuidar do nosso planeta de
+            forma divertida e prática. Cada material reciclado e gota d'água
+            economizada conta.
+        </p>
+        <a href="{{ url_for('login') }}" class="btn_comece">Iniciar Jornada &rarr;</a>
+    </div>
+
+    <div class="sobre_missao">
+        <h4 class="missao_titulo">Sobre a Menos é Mais</h4>
+        <p class="missao_texto">
+            Acreditamos que a educação é a semente mais poderosa para transformar
+            a nossa relação com o planeta Terra.
+        </p>
+
+        <div class="sobre_missao-card">
+            <img src="{{ url_for('static', filename='img/sobre/folhas_cima.png') }}" class="folhas_cima cima_card1" alt="" />
+            <img src="{{ url_for('static', filename='img/sobre/nossa_missao.png') }}" alt="" />
+            <div class="missao_card-texto">
+                <h5>Nossa Missão</h5>
+                <p>
+                    Tornar a educação ambiental acessível, divertida e engajadora para
+                    brasileiros de todas as idades. Queremos inspirar ações diárias
+                    que, somadas, criam um impacto global positivo na preservação da
+                    natureza.
+                </p>
+            </div>
+            <img src="{{ url_for('static', filename='img/sobre/folhas_baixo.png') }}" class="folhas_baixo baixo_card1" alt="" />
+        </div>
+
+        <div class="sobre_missao-card">
+            <img src="{{ url_for('static', filename='img/sobre/folhas_cima.png') }}" class="folhas_cima cima_card2" alt="" />
+            <img src="{{ url_for('static', filename='img/sobre/para_quem.png') }}" alt="" />
+            <div class="missao_card-texto">
+                <h5>Para Quem é?</h5>
+                <p>
+                    A Menos é Mais foi desenhada para todos! Desde crianças
+                    descobrindo as cores da reciclagem, até adultos que buscam dicas
+                    práticas para um estilo de vida mais sustentável e professores que
+                    procuram material de apoio interativo.
+                </p>
+            </div>
+            <img src="{{ url_for('static', filename='img/sobre/folhas_baixo.png') }}" class="folhas_baixo baixo_card2" alt="" />
+        </div>
+    </div>
+</section>
+
+<!-- ================= SESSÃO LIVROS ================= -->
+<section class="livros_section" id="livros">
+    <img src="{{ url_for('static', filename='img/livros/folhas.png') }}" alt="folhas" class="livros_section-folhas" />
+    <h1 class="livros_section-title">Nossos Livros</h1>
+    <img src="{{ url_for('static', filename='img/livros/Fundo Borda Wave.png') }}" alt="livros" class="livros_section-livros" />
+</section>
+
+<!-- ================= SESSÃO CONTATO ================= -->
+<section class="contato" id="contato">
+    <h1 class="contato_title">Vamos Conversar?</h1>
+    <p class="contato_text">
+        Entre em contato conosco para mais informações sobre nossos serviços e
+        como podemos ajudar a sua empresa a crescer.
+    </p>
+    <div class="contato_container">
+        <div class="contato_info">
+            <div>
+                <span class="contato_info-title">Informações de Contato:</span>
+                <ul class="contato_info-list">
+                    <li class="info_list-item">
+                        <i class="fa-solid fa-at"></i> - contato@menosemaislixozero.com.br
+                    </li>
+                    <li class="info_list-item">
+                        <i class="fa-solid fa-phone"></i> - (11) 97790-1120
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <span class="contato_info-title">Redes Sociais:</span>
+                <ul class="contato_info-listRedes">
+                    <li><i class="fa-brands fa-square-linkedin icon"></i></li>
+                    <li><i class="fa-brands fa-square-instagram icon"></i></li>
+                    <li><i class="fa-brands fa-square-facebook icon"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="contato_map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.9984728181075!2d-46.55403742420494!3d-23.46051957886924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef556cfa81095%3A0x8e65adcb1953cab5!2sR.%20Diva%2C%20319%20-%20Jardim%20Leda%2C%20Guarulhos%20-%20SP%2C%2007062-040!5e0!3m2!1spt-BR!2sbr!4v1780678769749!5m2!1spt-BR!2sbr"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" 
+                class="map">
+            </iframe>
+            <span class="contato_form-title">Rua Diva, 319 - L63, Parque Santo Antonio. Guarulhos, SP</span>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const textRef = document.getElementById("tituloBox");
+        const folhaDireita = document.getElementById("folhaDireita");
+        const folhaEsquerda = document.getElementById("folhaEsquerda");
+        const meioDireito = document.getElementById("meioDireita");
+        const meioEsquerdo = document.getElementById("meioEsquerda");
+
+        window.addEventListener("scroll", function() {
+            const value = window.scrollY;
+
+            if (value <= 700) {
+                if (textRef) {
+                    textRef.style.transform = `translateY(${value * 2.5}px)`;
+                    if (value > 150) {
+                        textRef.style.zIndex = "-1";
+                    } else {
+                        textRef.style.zIndex = "2";
+                    }
+                }
+                if (folhaDireita) {
+                    folhaDireita.style.transform = `translate(${value * 0.5}px, ${value * -1}px)`;
+                }
+                if (meioEsquerdo) {
+                    meioEsquerdo.style.transform = `translateY(${value * 0.5}px)`;
+                }
+                if (meioDireito) {
+                    meioDireito.style.transform = `translate(${value * 0.5}px, ${value * 0.5}px)`;
+                }
+                if (folhaEsquerda) {
+                    folhaEsquerda.style.transform = `translateY(${value * -1}px)`;
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
