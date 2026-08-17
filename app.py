@@ -151,9 +151,7 @@ def painel_professor():
             url_for('home')
         )
 
-    return render_template(
-        'dash_professor/painel.html'
-    )
+    return "Painel do Professor - acesso autorizado"
 
 
 @app.route('/diretoria/painel')
