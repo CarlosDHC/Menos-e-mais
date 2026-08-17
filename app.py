@@ -28,26 +28,34 @@ def home():
 
 @app.route('/sobre')
 def sobre():
-    return "Página Sobre em construção"
+    return render_template('sobre.html') # Já atualizado para usar template!
 
 @app.route('/contato')
 def contato():
-    return "Página de Contato em construção"
+    return render_template('contato.html') # Já atualizado para usar template!
+
+@app.route('/livros')
+def livros():
+     return render_template('livros.html') # Rota nova que não tinha antes!
 
 # ============================================================
 # ROTAS DE NAVEGAÇÃO INTERNA
 # ============================================================
 @app.route('/missoes')
 def missoes():
-    return "Página de Missões em construção"
+    return render_template('dash_usuario/missoes.html') # Já aponta para a subpasta
 
 @app.route('/conquistas')
 def conquistas():
-    return "Página de Conquistas em construção"
+    return render_template('dash_usuario/conquistas.html') # Já aponta para a subpasta
 
 @app.route('/perfis')
 def perfis():
-    return "Página de Perfis em construção"
+    return render_template('perfis.html') # Rota nova
+
+@app.route('/quiz')
+def quiz():
+     return render_template('quiz.html') # Rota nova
 
 # ============================================================
 # AUTENTICAÇÃO E LOGIN
@@ -73,16 +81,18 @@ def login():
             if usuario.primeiro_acesso:
                 return redirect(url_for('simulado'))
             
-            # Professor
+            # Redirecionamento por tipo de usuário (Role)
             if usuario.tipo == 'professor':
                 return redirect(url_for('painel_professor'))
             
-            # Diretoria
             elif usuario.tipo in ['diretor', 'gestor']:
                 return redirect(url_for('painel_diretoria'))
             
-            # Outros usuários
-            return redirect(url_for('home'))
+            elif usuario.tipo == 'admin':
+                 return redirect(url_for('painel_admin_geral'))
+            
+            # Outros usuários (aluno, etc)
+            return redirect(url_for('missoes')) # Modificado: aluno logado vai para missões, não home
         
         return render_template('login.html', erro='Email ou senha incorretos')
     
@@ -103,7 +113,8 @@ def painel_professor():
         return redirect(url_for('login'))
     if session.get('role') != 'professor':
         return redirect(url_for('home'))
-    return render_template('dash_professor/painel.html')
+    # Apontando para a possível subpasta que você criar para o professor
+    return render_template('dash_professor/painel.html') 
 
 @app.route('/diretoria/painel')
 def painel_diretoria():
@@ -112,6 +123,15 @@ def painel_diretoria():
     if session.get('role') not in ['diretor', 'gestor']:
         return redirect(url_for('home'))
     return "Página da Diretoria"
+
+@app.route('/admin/geral')
+def painel_admin_geral():
+    if 'id_usuario' not in session:
+        return redirect(url_for('login'))
+    if session.get('role') != 'admin':
+         return redirect(url_for('home'))
+    return render_template('dash_admin/geral.html')
+
 
 # ============================================================
 # LOGOUT
