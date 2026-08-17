@@ -26,30 +26,31 @@
             </div>
             
             <!-- Formulário HTML nativo. Ele envia as informações para a rota '/login' -->
-            <form class="form" action="/login" method="POST">
-                <label for="email">
-                    Email: <br />
-                    <input
-                        type="email"
-                        placeholder="example@example.com"
-                        id="email"
-                        name="email"
-                        required
-                    />
-                </label>
-                <label for="senha">
-                    Senha: <br />
-                    <input
-                        type="password"
-                        placeholder="Senha"
-                        id="senha"
-                        name="senha"
-                        required
-                    />
-                </label>
-                
-                <button type="submit">Entrar &rarr;</button>
-            </form>
+            <form class="form" action="{{ url_for('login.login') }}" method="POST">
+            <label for="email">
+                Email: <br />
+                <input
+                    type="email"
+                    placeholder="example@example.com"
+                    id="email"
+                    name="email"
+                    required
+                />
+            </label>
+
+            <label for="senha">
+                Senha: <br />
+                <input
+                    type="password"
+                    placeholder="Senha"
+                    id="senha"
+                    name="senha"
+                    required
+                />
+            </label>
+
+            <button type="submit">Entrar &rarr;</button>
+        </form>
             
             <!-- Mensagem de erro que será enviada pelo Flask, caso o login falhe -->
             {% if erro %}
