@@ -3,12 +3,19 @@
 {% block styles %}
 <!-- CSS Específico da Home -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
 <!-- Importando a biblioteca de Ícones (FontAwesome) usada na seção Contato -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+
+
 {% endblock %}
 
-{% block content %}
+<!-- REMOVENDO A NAVBAR DA HOME -->
+{% block navbar %}{% endblock %}
 
+{% block content %}
 <!-- ================= SESSÃO PARALLAX (Home) ================= -->
 <section class="parallax" id="parallax">
     <img src="{{ url_for('static', filename='img/home/folhas_direita.svg') }}" id="folhaDireita" alt="" />
@@ -18,10 +25,9 @@
 
     <div class="titulo" id="tituloBox">
         <div>
-            <img class="titulo_logo" id="text" src="{{ url_for('static', filename='img/home/logo.png') }}" alt="Menos é Mais Logo" />
+            <img class="titulo_logo" id="text" src="{{ url_for('static', filename='img/home/logoMenosMais.png') }}" alt="Menos é Mais Logo" />
         </div>
-        <h4 class="titulo_text">Menos é Mais</h4>
-        <h4 class="subtitulo_text">Lixo Zero</h4>
+        
         <a href="{{ url_for('login') }}" class="btn_comece">Comece Já</a>
     </div>
 

@@ -230,7 +230,7 @@ body {
 /* ================= SESSÃO SOBRE ================= */
 .sobre {
   min-height: 100vh;
-  background-color: var(--cor-fundoVerde);
+  background-color: var(--cor-fundo-global);
   display: flex;
   flex-direction: column;
   align-items: center;

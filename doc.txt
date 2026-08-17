@@ -1,0 +1,3 @@
+instalar --> pip install -r requirements.txt
+instalar --: 
+Rodar serve --> python app.py
