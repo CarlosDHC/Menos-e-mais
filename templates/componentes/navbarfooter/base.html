@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma Menos é Mais</title>
     
-    <!-- Importando o CSS Global -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <!-- Importando o CSS Global (Estilo base, Navbar e Footer) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Importando a biblioteca de Ícones (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Espaço para CSS específico de cada página -->
     {% block styles %}{% endblock %}
@@ -16,7 +19,10 @@
     {% block navbar %}
     <header class="navbar">
         <nav class="navBar">
-            <img src="{{ url_for('static', filename='img/navBar/logo.png') }}" alt="Logo" class="imgLogo" />
+            <!-- Logo clicável que leva de volta para a Home -->
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/navBar/logo.png') }}" alt="Logo Menos é Mais" class="imgLogo" />
+            </a>
             
             <ul class="nav_list">
                 <li class="nav_list-item">
@@ -27,7 +33,8 @@
                 </li>
             </ul>
 
-            <a href="{{ url_for('login') }}" class="link_perfil">
+            <!-- Link do perfil -->
+            <a href="{{ url_for('perfis') }}" class="link_perfil">
                 <i class="fa-solid fa-circle-user icon"></i>
             </a>
         </nav>
@@ -37,13 +44,13 @@
     <!-- ================= CONTEÚDO DINÂMICO ================= -->
     <main>
         {% block content %}
-        <!-- O conteúdo das páginas será injetado aqui -->
+        <!-- O conteúdo das outras páginas (home, login, missoes, etc) será injetado aqui -->
         {% endblock %}
     </main>
 
     <!-- ================= FOOTER ================= -->
     <section class="footer">
-        <span>Feito por Faculdade ENIAC &copy; 2026 </span>
+        <span>Feito por Faculdade ENIAC; 2026 </span>
     </section>
 </body>
 </html>

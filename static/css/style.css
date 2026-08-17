@@ -1,0 +1,191 @@
+/* ================= VARIÁVEIS DE CORES GLOBAIS ================= */
+/* Se você já tinha essas variáveis em outro arquivo, elas ficam na raiz do projeto */
+:root {
+  --cor-fundo: #ffffff;
+  --cor-fundoVerde: #e8f5e9;
+  --cor-verdeClaro: #4caf50;
+  --cor-verdeEscuro: #2e7d32;
+  --cor-verdeMaisEscuro: #1b5e20;
+  --cor-font: #333333;
+  --cor-fontEscuro: #111111;
+}
+
+/* ================= RESET GLOBAL ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-font);
+  overflow-x: hidden;
+}
+
+/* Para evitar que o conteúdo da página fique escondido atrás da Navbar fixa */
+main {
+  min-height: calc(100vh - 5em); /* 100% da tela menos a altura do footer */
+}
+
+/* ================= NAVBAR (Efeito Glassmorphism) ================= */
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  
+  /* Efeito Vidro/Glassmorphism */
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.imgLogo {
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.imgLogo:hover {
+  transform: scale(1.05);
+}
+
+.nav_list {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+}
+
+.nav_list-link {
+  text-decoration: none;
+  color: var(--cor-verdeEscuro);
+  font-size: 1.15rem;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Efeito de linha animada embaixo do link */
+.nav_list-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--cor-verdeClaro);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav_list-link:hover {
+  color: var(--cor-verdeClaro);
+}
+
+.nav_list-link:hover::after {
+  width: 100%;
+}
+
+.link_perfil {
+  text-decoration: none;
+}
+
+.link_perfil .icon {
+  font-size: 2.2rem;
+  color: var(--cor-verdeEscuro);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.link_perfil:hover .icon {
+  color: var(--cor-verdeClaro);
+  transform: scale(1.1);
+}
+
+/* ================= NAVBAR RESPONSIVA ================= */
+@media (max-width: 768px) {
+  .navBar {
+    padding: 0 20px;
+    height: 70px;
+  }
+  
+  .imgLogo {
+    height: 40px;
+  }
+
+  .nav_list {
+    gap: 1.5rem;
+  }
+
+  .nav_list-link {
+    font-size: 1rem;
+  }
+
+  .link_perfil .icon {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav_list {
+    display: none; /* Esconde os links em telas muito pequenas (ideal para Menu Hambúrguer futuramente) */
+  }
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background-color: var(--cor-verdeMaisEscuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 5em;
+  padding: 1em;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Footer Notebook */
+@media (max-width: 1200px) {
+  .footer {
+    height: 5em;
+  }
+}
+
+/* Footer Tablet */
+@media (max-width: 992px) {
+  .footer {
+    height: auto;
+    padding: 1.5em;
+  }
+}
+
+/* Footer Celular */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    height: auto;
+    padding: 2em 1.5em;
+    font-size: 0.95rem;
+  }
+}
+
+/* Footer Celular pequeno */
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5em 1em;
+    font-size: 0.9rem;
+  }
+}
