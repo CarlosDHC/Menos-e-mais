@@ -153,6 +153,43 @@ def painel_professor():
 
     return "Painel do Professor - acesso autorizado"
 
+@app.route('/professor/turmas')
+def professor_turmas():
+
+    if 'id_usuario' not in session:
+        return redirect(
+            url_for('login')
+        )
+
+    if session.get('role') != 'professor':
+        return redirect(
+            url_for('home')
+        )
+
+    turmas = db.session.execute(
+        db.text("""
+            SELECT
+                t.id_turma,
+                t.nome AS turma,
+                e.id_escola,
+                e.nome AS escola
+            FROM usuario_turma ut
+            JOIN turma t
+                ON t.id_turma = ut.id_turma
+            JOIN escola e
+                ON e.id_escola = t.id_escola
+            WHERE ut.id_usuario = :id_usuario
+        """),
+        {
+            'id_usuario': session['id_usuario']
+        }
+    ).mappings().all()
+
+    return {
+        'professor': session['nome_usuario'],
+        'turmas': [dict(turma) for turma in turmas]
+    }
+
 
 @app.route('/diretoria/painel')
 def painel_diretoria():
